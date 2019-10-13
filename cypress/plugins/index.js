@@ -16,7 +16,9 @@ module.exports = (on, config) => {
   // `config` is the resolved Cypress config
 }
 
+let percyHealthCheck = require('@percy/cypress/task')
 const cucumber = require('cypress-cucumber-preprocessor').default
 module.exports = (on, config) => {
+  on("task", percyHealthCheck)
   on('file:preprocessor', cucumber())
 }

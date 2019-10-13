@@ -5,14 +5,17 @@ const loginElements = new LoginElements
 const url = Cypress.config("baseUrl")
 
 class LoginPage {
+    
     // Acessa o site que será testado
     acessarSite() {
         cy.visit(url)
+        cy.percySnapshot("HomePage")
     }
 
     // Clica no botão que acessa a página de login do site
     clicarBotaoPaginaLogin() {
         cy.get(loginElements.botaoLogin()).click()
+        cy.percySnapshot("LoginPage")
     }
 
     // Clica no botão de realizar login
@@ -38,6 +41,7 @@ class LoginPage {
     // Visualizar mensagem de erro "Usuário ou senha inválidos."
     visualizarErroLogin() {
         cy.get(loginElements.mensagemErro()).should('contain', 'Usuário ou senha inválidos.')
+        cy.percySnapshot("MsgUsuarioSenhaInvalido")
     }
     
 }
